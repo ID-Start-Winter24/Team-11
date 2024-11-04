@@ -6,6 +6,7 @@ from llama_index.llms.openai import OpenAI
 from llama_index.core import Settings
 
 
+
 path_res = "./res"
 path_persist = os.path.join(path_res, "persist")
 
@@ -43,7 +44,8 @@ def response(message, history):
 def main():
     chatbot = gr.ChatInterface(
         fn=response,
-        type="messages"
+        type="messages",
+        css_paths="./main.css",
     )
 
     chatbot.launch(inbrowser=True)
