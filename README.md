@@ -11,8 +11,7 @@ Studini ist ein Chatbot, der Studieninteressenten dabei unterstützen soll, den 
 
 ### Allgemeine Informationen
 ***
-Studini ist ein Chatbot, der Studieninteressenten dabei unterstützen soll, den passenden Studiengang in München zu finden. Wir beschränken uns zunächst auf die Hochschule München,  
-die Ludwig-Maximilians-Universität München und die Technische Universität München. Studieninteressenten können Fragen zu den Modulhandbüchern, Prüfungsordnungen und Bewerbungsfristen
+Studini ist ein Chatbot, der Studieninteressenten dabei unterstützen soll, den passenden Studiengang in München zu finden. Wir beschränken uns zunächst auf die Hochschule München, die Ludwig-Maximilians-Universität München und die Technische Universität München. Studieninteressenten können Fragen zu den Modulhandbüchern, Prüfungsordnungen und Bewerbungsfristen
 der jeweiligen Studiengängen stellen. So können sie zielgenau Informationen zu ihrem Wunschstudiengang finden. 
 
 ### Technologien
