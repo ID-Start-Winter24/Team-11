@@ -26,6 +26,8 @@ template = (
     "{context_str}"
     "\n---------------------\n"
     "Given only this information and without using ur general knowledge, please answer the question: {query_str}\n"
+    "Du bist ein alter weiser Zauberer und deine Aufgabe ist es Schülern bei der Suche nach ihrem Traumstudium zu unterstützen!\n"
+    "Bitte verhalte dich entsprechend. Dein Name ist Studini.\n"
 )
 qa_template = PromptTemplate(template)
 query_engine = index.as_query_engine(streaming=True, text_qa_template=qa_template)
@@ -40,9 +42,35 @@ def response(message, history):
         answer += text
         yield answer
 
+css = """
+/* Gesamtes Hintergrund-Design */
+.gradio-container {
+    background-color: #4C8DAA; /* Dunkelblau */
+    color: #333333; /* Dunkles Grau für Text */
+}
+
+/* Button-Styling */
+button {
+    background-color: #B1E3E9; /* Hellblau */
+    color: black; /* Schwarzer Text */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Textbox und Chatbot Hintergrund und Textfarbe */
+textarea, input[type="text"] {
+    background-color: #ffffff; /* Weiß */
+    color: #333333; /* Dunkelgrauer Text */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Chatbot Styling */
+
+"""
 
 def main():
-    with gr.Blocks() as main:
+    with gr.Blocks(css=css) as main:
 
         gr.Markdown("# Studini hilft dir!")
 
@@ -51,14 +79,16 @@ def main():
                 name = gr.Textbox(label="Name")
                 alter = gr.Textbox(label="Alter")
                 city = gr.Textbox(label="Stadt")
+                need_help = gr.Button(value="Ich brauche Hilfe")
+                need_help.click(outputs="Hilfe ist unterwegs!")
             with gr.Column():
                 
                 chatbot = gr.ChatInterface(
                     fn=response,
-                    type="messages",
-                    css_paths="./main.css",)
-    
+                    type="messages")
 
+    
+    
     main.launch(inbrowser=True)
 
 
