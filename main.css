@@ -1,7 +1,33 @@
-:root .dark {
-    --body-background-fill: #547EAE;
-    --background-fill-secondary: #ACBFD8;
-    --block-background-fill: #ffffff;
-    --input-background-fill: #fff;
-    --body-text-color: #000;
+/* Gesamtes Hintergrund-Design */
+.gradio-container {
+    background-color: #4C8DAA; /* Dunkelblau */
+    color: #333333; /* Dunkles Grau für Text */
+}
+
+/* Button-Styling */
+button {
+    background-color: #B1E3E9; /* Hellblau */
+    color: black; /* Schwarzer Text */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* Textbox und Chatbot Hintergrund und Textfarbe */
+textarea, input[type="text"] {
+    background-color: #ffffff; /* Weiß */
+    color: #333333; /* Dunkelgrauer Text */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.gradio-container-5-5-0 .prose * {
+    color: black;
+}
+
+.app.svelte-wpkpf6.svelte-wpkpf6 {
+    margin: 0 !important;
+}
+
+.app.svelte-wpkpf6.svelte-wpkpf6:not(.fill_width) {
+    max-width: 100% !important;
 }

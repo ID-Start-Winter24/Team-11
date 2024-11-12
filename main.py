@@ -42,50 +42,28 @@ def response(message, history):
         answer += text
         yield answer
 
-css = """
-/* Gesamtes Hintergrund-Design */
-.gradio-container {
-    background-color: #4C8DAA; /* Dunkelblau */
-    color: #333333; /* Dunkles Grau für Text */
-}
-
-/* Button-Styling */
-button {
-    background-color: #B1E3E9; /* Hellblau */
-    color: black; /* Schwarzer Text */
-    border-radius: 5px;
-    padding: 10px;
-}
-
-/* Textbox und Chatbot Hintergrund und Textfarbe */
-textarea, input[type="text"] {
-    background-color: #ffffff; /* Weiß */
-    color: #333333; /* Dunkelgrauer Text */
-    border-radius: 5px;
-    padding: 10px;
-}
-
-/* Chatbot Styling */
-
-"""
-
 def main():
-    with gr.Blocks(css=css) as main:
+    with gr.Blocks(css_paths = "./main.css",) as main:
 
         gr.Markdown("# Studini hilft dir!")
 
         with gr.Row():
-            with gr.Column():
+            with gr.Column(scale=1):
                 name = gr.Textbox(label="Name")
                 alter = gr.Textbox(label="Alter")
                 city = gr.Textbox(label="Stadt")
-                need_help = gr.Button(value="Ich brauche Hilfe")
+                need_help = gr.Button(value="Ich brauche Hilfe", elem_id="Test")
                 need_help.click(outputs="Hilfe ist unterwegs!")
-            with gr.Column():
-                
+            with gr.Column(scale=3):
+                chatbot_fenster = gr.Chatbot(
+                    type="messages",
+                    elem_id="CHAT",
+                    height=500,
+                )
                 chatbot = gr.ChatInterface(
+                    chatbot = chatbot_fenster,
                     fn=response,
-                    type="messages")
+                    type="messages",)
 
     
     
