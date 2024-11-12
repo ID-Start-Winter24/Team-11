@@ -42,13 +42,24 @@ def response(message, history):
 
 
 def main():
-    chatbot = gr.ChatInterface(
-        fn=response,
-        type="messages",
-        css_paths="./main.css",
-    )
+    with gr.Blocks() as main:
 
-    chatbot.launch(inbrowser=True)
+        gr.Markdown("# Studini hilft dir!")
+
+        with gr.Row():
+            with gr.Column():
+                name = gr.Textbox(label="Name")
+                alter = gr.Textbox(label="Alter")
+                city = gr.Textbox(label="Stadt")
+            with gr.Column():
+                
+                chatbot = gr.ChatInterface(
+                    fn=response,
+                    type="messages",
+                    css_paths="./main.css",)
+    
+
+    main.launch(inbrowser=True)
 
 
 if __name__ == "__main__":
