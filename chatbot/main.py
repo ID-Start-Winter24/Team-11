@@ -43,7 +43,7 @@ def response(message, history):
         yield answer
 
 def main():
-    with gr.Blocks(css_paths = "./main.css",) as main:
+    with gr.Blocks(css_paths = "./chatbot/main.css",) as main:
 
         gr.Markdown("# Studini hilft dir!")
 
@@ -52,8 +52,9 @@ def main():
                 name = gr.Textbox(label="Name")
                 alter = gr.Textbox(label="Alter")
                 city = gr.Textbox(label="Stadt")
-                need_help = gr.Button(value="Ich brauche Hilfe", elem_id="Test")
-                need_help.click(outputs="Hilfe ist unterwegs!")
+                need_help = gr.Button("Ich brauche Hilfe")
+                need_help_ausgabe = gr.Textbox(visible=False, container=False,elem_id="HilfeButtonAusgabe")
+                need_help.click(fn=hilfe_anfordern, inputs=None, outputs=need_help_ausgabe)
             with gr.Column(scale=3):
                 chatbot_fenster = gr.Chatbot(
                     type="messages",
@@ -69,6 +70,8 @@ def main():
     
     main.launch(inbrowser=True)
 
+def hilfe_anfordern():
+    return gr.update(value="Hilfe ist Unterwegs!", visible=True)
 
 if __name__ == "__main__":
     main()

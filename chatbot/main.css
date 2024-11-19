@@ -31,3 +31,17 @@ textarea, input[type="text"] {
 .app.svelte-wpkpf6.svelte-wpkpf6:not(.fill_width) {
     max-width: 100% !important;
 }
+
+/* Stil für die Textblase des Benutzers */
+.gradio-chatbot .message.user {
+    background-color: #ADD8E6; /* Hintergrundfarbe der Benutzer-Textblase */
+    font-family: "Arial", sans-serif; /* Schriftart der Benutzer-Textblase */
+    color: #000000; /* Textfarbe des Benutzers */
+}
+
+/* Stil für die Textblase des Bots */
+.gradio-chatbot .message.bot {
+    background-color: #90EE90; /* Hintergrundfarbe der Bot-Textblase */
+    font-family: "Times New Roman", serif; /* Schriftart der Bot-Textblase */
+    color: #000000; /* Textfarbe des Bots */
+}
