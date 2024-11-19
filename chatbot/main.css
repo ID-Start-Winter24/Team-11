@@ -1,12 +1,96 @@
+@font-face {
+    font-family: "Geist", serif;
+    src: url("../assets/fonts/Geist/Geist-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Geist", serif;
+    src: url("../assets/fonts/Geist/Geist-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Geist", serif;
+    src: url("../assets/fonts/Geist/Geist-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", serif;
+    src: url("../assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", serif;
+    src: url("../assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins", serif;
+    src: url("../assets/fonts/Poppins/Poppins-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- */
+/* -- Variables -- */
+:root {
+    --primary-color: #4C8DAA; /* Dark Blue  */
+    --secondary-color: #B1E3E9; /* Light Blue  */
+    --accent-color: #F7B774; /* Light Orange  */
+}
+
+
 /* Gesamtes Hintergrund-Design */
 .gradio-container {
-    background-color: #4C8DAA; /* Dunkelblau */
+    background-color: var(--primary-color); /* Dunkelblau */
     color: #333333; /* Dunkles Grau für Text */
+}
+
+/* Textbox Backgroundcolor white */
+.bubble-wrap.svelte-vxn3uw.svelte-vxn3uw {
+    background-color: #ffffff !important;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- */
+/* -- Bot answer field styling -- */
+.bot.svelte-5ng3n.svelte-5ng3n {
+    background-color: var(--secondary-color);
+}
+
+.gradio-container.gradio-container-5-5-0 .contain button.svelte-5ng3n.latest {
+    background-color: var(--secondary-color) !important;
+}
+
+.bubble.svelte-5ng3n .bot.svelte-5ng3n {
+    border-color: var(--secondary-color);;
+}
+
+/* -- -- -- -- -- -- -- -- -- -- -- */
+/* -- User input field styling -- */
+.user.svelte-5ng3n.svelte-5ng3n {
+    background-color: var(--primary-color);
+}
+
+.user.svelte-5ng3n.svelte-5ng3n {
+    background-color: var(--primary-color);
+}
+
+.gradio-container.gradio-container-5-5-0 .contain .user.svelte-5ng3n.svelte-5ng3n > button {
+    background-color: var(--primary-color) !important;
 }
 
 /* Button-Styling */
 button {
-    background-color: #B1E3E9; /* Hellblau */
+    background-color: var(--accent-color); /* Hellblau */
     color: black; /* Schwarzer Text */
     border-radius: 5px;
     padding: 10px;

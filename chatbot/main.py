@@ -43,7 +43,7 @@ def response(message, history):
         yield answer
 
 def main():
-    with gr.Blocks(css_paths = "./main.css",) as main:
+    with gr.Blocks(css_paths = "./chatbot/main.css",) as main:
 
         gr.Markdown("# Studini hilft dir!")
 
