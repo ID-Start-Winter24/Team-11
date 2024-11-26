@@ -17,33 +17,10 @@ index = VectorStoreIndex(documents)
 query_engine = index.as_query_engine()
 
 @app.route('/chat', methods=['POST'])
-# app.py (Erweiterung des Chat-Endpunkts)
-
-@app.route('/chat', methods=['POST'])
 def chat():
-    try:
-        data = request.get_json()
-        if not data or 'message' not in data:
-            return jsonify({'error': 'Keine Nachricht bereitgestellt.'}), 400
-
-        user_input = data['message']
-        print(f"Empfangene Nachricht: {user_input}")
-
-        # Definiere den System-Prompt
-        system_prompt = "Du bist ein freundlicher und hilfsbereiter Assistent, der präzise und klare Antworten gibt."
-
-        # Kombiniere System-Prompt und Benutzeranfrage
-        full_prompt = f"{system_prompt}\n\nBenutzer: {user_input}\nAssistent:"
-
-        # Führe die Abfrage mit LlamaIndex durch
-        response = query_engine.query(full_prompt)
-        print(f"Generierte Antwort: {response}")
-
-        return jsonify({'response': str(response)}), 200
-
-    except Exception as e:
-        print(f"Fehler bei der Verarbeitung der Anfrage: {e}")
-        return jsonify({'error': 'Ein Fehler ist aufgetreten.'}), 500
+    user_input = request.json.get('message')
+    response = query_engine.query(user_input)
+    return jsonify({'response': str(response)})
 
 if __name__ == '__main__':
     app.run()
