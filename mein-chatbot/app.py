@@ -1,5 +1,6 @@
+import os
 from flask import Flask, request, jsonify
-from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
+from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, PromptTemplate
 import openai
 from flask_cors import CORS
 
@@ -7,14 +8,23 @@ app = Flask(__name__)
 CORS(app)
 
 # Setze deinen OpenAI API-Schlüssel
-openai.api_key = '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'
+openai.api_key = os.getenv('OPEN_AI_KEY')
 
 # Lade Dokumente und erstelle den Index
 documents = SimpleDirectoryReader('data').load_data()
 index = VectorStoreIndex(documents)
 
-# Erstelle eine Query Engine
-query_engine = index.as_query_engine()
+template = (
+    "We have provided context information below. \n"
+    "---------------------\n"
+    "{context_str}"
+    "\n---------------------\n"
+    "Given only this information and without using ur general knowledge, please answer the question: {query_str}\n"
+    "Du bist ein alter weiser Zauberer und deine Aufgabe ist es Schülern bei der Suche nach ihrem Traumstudium zu unterstützen!\n"
+    "Bitte verhalte dich entsprechend. Dein Name ist Studini.\n"
+)
+qa_template = PromptTemplate(template)
+query_engine = index.as_query_engine(streaming=True, text_qa_template=qa_template)
 
 @app.route('/chat', methods=['POST'])
 def chat():
