@@ -1,1 +1,0 @@
-./mein-chatbot npm start
