@@ -1,5 +1,5 @@
 // src/Chat.js
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 
 function Chat() {
@@ -32,7 +32,10 @@ function Chat() {
   };
 
   return (
-    <div>
+      <div style={styles.container}>
+      <header style={styles.header}>
+        <h1>Mein Chatbot</h1>
+      </header>
       <div className="chat-window" style={styles.chatWindow}>
         {messages.map((msg, index) => (
           <div
@@ -63,10 +66,27 @@ function Chat() {
 
 // Einfache Inline-Styles für bessere Sichtbarkeit
 const styles = {
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100vh',
+      maxWidth: '1000px',
+      margin: '0 auto',
+      border: '1px solid #ccc',
+      borderRadius: '8px',
+      overflow: 'hidden',
+      fontFamily: 'Arial, sans-serif',
+    },
+    header: {
+      backgroundColor: '#4C8DAA',
+      color: 'white',
+      padding: '15px',
+      textAlign: 'center',
+    },
   chatWindow: {
     border: '1px solid #ccc',
     padding: '10px',
-    height: '400px',
+    height: '400',
     overflowY: 'scroll',
     marginBottom: '10px',
   },
