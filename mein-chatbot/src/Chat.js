@@ -1,6 +1,7 @@
 // src/Chat.js
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import './Chat.css'; // Importiere die CSS-Datei
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -32,92 +33,38 @@ function Chat() {
   };
 
   return (
-      <div style={styles.container}>
-      <header style={styles.header}>
-        <h1>Mein Chatbot</h1>
-      </header>
-      <div className="chat-window" style={styles.chatWindow}>
-        {messages.map((msg, index) => (
-          <div
-            key={index}
-            style={{
-              ...styles.message,
-              ...(msg.sender === 'user' ? styles.userMessage : styles.botMessage),
-            }}
-          >
-            <p>{msg.text}</p>
-          </div>
-        ))}
-      </div>
-      <div style={styles.inputContainer}>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-          style={styles.input}
-          placeholder="Gib eine Nachricht ein..."
-        />
-        <button onClick={sendMessage} style={styles.button}>Senden</button>
-      </div>
+    <div className="container">
+        <header className="header">
+            <h1>Mein Chatbot</h1>
+        </header>
+        <div className="chat-window">
+            {messages.map((msg, index) => (
+                <div
+                    key={index}
+                    className={`message ${msg.sender === 'user' ? 'user-message' : 'bot-message'}`}
+                >
+                    <p>{msg.text}</p>
+                </div>
+            ))}
+        </div>
+        <div className="input-container">
+            <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                className="input"
+                placeholder="Gib eine Nachricht ein..."
+            />
+            <button onClick={sendMessage} className="button">Senden</button>
+        </div>
+        <footer className="footer">
+            <p>&copy; 2024 Studini-Inc. Alle Rechte vorbehalten. Build 0.2.1</p>
+        </footer>
     </div>
-  );
+);
 }
 
-// Einfache Inline-Styles für bessere Sichtbarkeit
-const styles = {
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      height: '100vh',
-      maxWidth: '1000px',
-      margin: '0 auto',
-      border: '1px solid #ccc',
-      borderRadius: '8px',
-      overflow: 'hidden',
-      fontFamily: 'Arial, sans-serif',
-    },
-    header: {
-      backgroundColor: '#4C8DAA',
-      color: 'white',
-      padding: '15px',
-      textAlign: 'center',
-    },
-  chatWindow: {
-    border: '1px solid #ccc',
-    padding: '10px',
-    height: '400',
-    overflowY: 'scroll',
-    marginBottom: '10px',
-  },
-  message: {
-    padding: '5px 10px',
-    borderRadius: '10px',
-    margin: '5px 0',
-    maxWidth: '80%',
-  },
-  userMessage: {
-    backgroundColor: '#DCF8C6',
-    alignSelf: 'flex-end',
-    marginLeft: 'auto',
-  },
-  botMessage: {
-    backgroundColor: '#F1F0F0',
-    alignSelf: 'flex-start',
-    marginRight: 'auto',
-  },
-  inputContainer: {
-    display: 'flex',
-  },
-  input: {
-    flex: 1,
-    padding: '10px',
-    fontSize: '16px',
-  },
-  button: {
-    padding: '10px',
-    fontSize: '16px',
-  },
-};
+
 
 export default Chat;
