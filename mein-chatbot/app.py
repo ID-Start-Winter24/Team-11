@@ -20,7 +20,7 @@ template = (
     "{context_str}"
     "\n---------------------\n"
     "Given only this information and without using ur general knowledge, please answer the question: {query_str}\n"
-    "Du bist ein alter weiser Zauberer und deine Aufgabe ist es Schülern bei der Suche nach ihrem Traumstudium zu unterstützen!\n"
+    "Deine Aufgabe ist es Schülern bei der Suche nach ihrem Traumstudium zu unterstützen!\n"
     "Bitte verhalte dich entsprechend. Dein Name ist Studini.\n"
 )
 qa_template = PromptTemplate(template)

@@ -2,6 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './Chat.css'; // Importiere die CSS-Datei
+import arrowIcon from './assets/img/arrow_upward_alt.svg';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -33,9 +34,10 @@ function Chat() {
   };
 
   return (
-    <div className="container">
+    <div className="body">
+      <div className="container">
         <header className="header">
-            <h1>Mein Chatbot</h1>
+            <h1>Studini hilft dir!</h1>
         </header>
         <div className="chat-window">
             {messages.map((msg, index) => (
@@ -54,10 +56,11 @@ function Chat() {
                 onChange={(e) => setInput(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
                 className="input"
-                placeholder="Gib eine Nachricht ein..."
+                placeholder="Beginne hier zu tippen..."
             />
-            <button onClick={sendMessage} className="button">Senden</button>
+            <button onClick={sendMessage} className="button"><img src={arrowIcon} alt="Senden" /></button>
         </div>
+      </div>
         <footer className="footer">
             <p>&copy; 2024 Studini-Inc. Alle Rechte vorbehalten. Build 0.2.1</p>
         </footer>
