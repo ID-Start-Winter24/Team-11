@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './Chat.css'; // Importiere die CSS-Datei
 import arrowIcon from './assets/img/arrow_upward_alt.svg';
+import studini from './assets/img/studini.png';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -37,6 +38,7 @@ function Chat() {
     <div className="body">
       <div className="container">
         <header className="header">
+          <div className="header-img-container"><img className="header-img" src={studini} alt="Senden" /></div>
             <h1>Studini hilft dir!</h1>
         </header>
         <div className="chat-window">
@@ -50,6 +52,7 @@ function Chat() {
             ))}
         </div>
         <div className="input-container">
+          <div className="input-img-container"><img className="input-img" src={studini} alt="Senden" /></div>
             <input
                 type="text"
                 value={input}
