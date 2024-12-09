@@ -19,9 +19,9 @@ template = (
     "---------------------\n"
     "{context_str}"
     "\n---------------------\n"
-    "Given only this information and without using ur general knowledge, please answer the question: {query_str}\n"
+    "Given mainly this information and avoid using ur general knowledge, please answer the question: {query_str}\n"
     "Deine Aufgabe ist es Schülern bei der Suche nach ihrem Traumstudium zu unterstützen!\n"
-    "Bitte verhalte dich entsprechend. Dein Name ist Studini.\n"
+    "Bitte verhalte dich entsprechend. Dein Name ist Studini. Erwähne nie mehr Tourismus\n"
 )
 qa_template = PromptTemplate(template)
 query_engine = index.as_query_engine(streaming=True, text_qa_template=qa_template)
