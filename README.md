@@ -1,3 +1,4 @@
+
 # Studini Chatbot 
 >Für den Studiengang, der auch montags passt!
 ***
@@ -19,5 +20,38 @@ der jeweiligen Studiengängen stellen. So können sie zielgenau Informationen zu
 
 ### Installation
 ***
+BackEnd:
+
+> 	Folgende Python-Module werden benötigt:
+>  - Flask
+>  - llama-index
+>  - openai
+>  - flask-cors
+> 
+>     `pip install Flask llama-index openai flask-cors`
+
+FrontEnd:
+
+1. Es wird [Node.js](https://nodejs.org/en) benötigt.
+2. Installiere nun `npm install axios` mithilfe der Konsole (ggf. mit Adminrechten).
+3. Navigiere nun mittels Konsole in das Projekt-Verzeichnis und erstelle eine react App mit `npx create-react-app mein-chatbot`
+
+### Starten des Chatbots
+- Starte das Backend in VS-Code `app.py`
+- Starte nun das FrontEnd
+- Navigiere hierfür in deinen mein-chatbot
+`C\Users\Benutzer\Documents\Studium\1.Semester\projektmodul_start\Team-11\mein-chatbot` oder so ähnlich
+- Öffne hier die Konsole
+`npm start`
+- es sollte sich nun der Bot in deinem Browser öffnen. Ansonsten lässt er sich auf [localhost:3000](localhost:3000) finden
+
+
+
+
 
 ### FAQs
+
+VS-Code findet eine Datei nicht?
+- Stelle sicher, dass du den ordner `mein-chatbot` in VS-Code geöffnet hast.
+VS-Code kann meine Module nicht finden?
+- Stelle sicher, dass das korrekte VEnv aktiv ist.

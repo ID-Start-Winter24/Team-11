@@ -1,0 +1,223 @@
+/*
+@font-face {
+    font-family: "Geist";
+    src: url("assets/fonts/Geist/Geist-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+*/
+
+@font-face {
+    font-family: "Geist";
+    src: url("assets/fonts/Geist/Geist-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+/*
+@font-face {
+    font-family: "Geist";
+    src: url("assets/fonts/Geist/Geist-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+} */
+
+/* @font-face {
+    font-family: "Poppins";
+    src: url("assets/fonts/Poppins/Poppins-Bold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+*/
+@font-face {
+    font-family: "Poppins";
+    src: url("assets/fonts/Poppins/Poppins-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* @font-face {
+    font-family: "Poppins";
+    src: url("assets/fonts/Poppins/Poppins-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+} */
+
+:root {
+    /* Colors */
+    --blue: #017EAB;
+    --light-blue: #00B1DD;
+    
+    /* Fonts */
+    --poppins-font: "Poppins" , sans-serif;
+    --geist-font: "Geist", sans-serif;
+}
+
+
+.body {
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0 auto;
+    overflow: hidden;
+    font-family: var(--poppins-font);
+}
+
+h1 {
+    font-family: var(--geist-font);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 1100px;
+    width: 95%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.header {
+    background-color: var(--blue);
+    color: white;
+    height: 48px;
+    text-align: center;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.header-img-container {
+    border-radius: 12px;
+    margin-right: 16px;
+    height: 40px;
+    width: 40px;
+    padding: 6px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+/* .header-img {
+} */
+
+.chat-window {
+    height: 800px;
+    overflow-y: scroll;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-window::-webkit-scrollbar { /* Hides Scrollbar */
+    display: none; 
+}
+
+.message {
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: var(--light-blue);
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+    max-width: 550px;
+    display: inline-block;
+    overflow-wrap: break-word;
+    border-radius: 12px;
+    border-top-right-radius: 0px;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.4);
+    margin: 20px 10px 20px 0;
+}
+
+.bot-message {
+    background-color: #fff;
+    align-self: flex-start;
+    margin-right: auto;
+    max-width: 550px;
+    display: inline-block;
+    overflow-wrap: break-word;
+    border-radius: 12px;
+    border-top-left-radius: 0px;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.4);
+    margin-left: 10px;
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: var(--blue);
+    border-radius: 24px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    margin-bottom: 10px;
+    padding: 12px 0px;
+}
+
+.input {
+    flex: 1;
+    padding: 12px 32px;
+    font-family: var(--poppins-font);
+    font-size: 16px;
+    border-radius: 16px;
+    border-color: transparent;
+    margin: 0 12px 0 18px;
+}
+
+.input:focus-visible {
+    outline: transparent !important;
+}
+
+.input-img-container {
+    margin-left: 12px;
+    border-radius: 12px;
+    height: 40px;
+    width: 40px;
+    padding: 6px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.input-img {
+    height: 40px;
+}
+
+.button {
+    height: 44px;
+    width: 44px;
+    margin-right: 20px;
+    background-color: var(--blue);
+    position: absolute;
+    border-radius: 100%;
+    border-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.footer {
+    background-color: #f1f1f1;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    color: #777;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
