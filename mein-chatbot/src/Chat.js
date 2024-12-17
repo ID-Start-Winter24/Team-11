@@ -20,7 +20,7 @@ function Chat() {
 
     try {
       // Send user message to the server
-      const response = await axios.post('http://localhost:5000/chat', {
+      const response = await axios.post('team-11-p90t.onrender.com', {
         message: input,
       });
 
