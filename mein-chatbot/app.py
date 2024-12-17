@@ -8,7 +8,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Setze deinen OpenAI API-Schlüssel
-openai.api_key = os.getenv('OPEN_AI_KEY')
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Lade Dokumente und erstelle den Index
 documents = SimpleDirectoryReader('data').load_data()
