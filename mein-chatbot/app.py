@@ -9,10 +9,12 @@ app = Flask(__name__)
 CORS(app)
 
 # Setze deinen OpenAI API-Schlüssel
-openai.api_key = os.environ.get('OPENAI_API_KEY')
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 path_modulhandbuch = "./data"
 path_persist = os.path.join(path_modulhandbuch, "persist")
+
+#print(openai.api_key)
 
 if not os.path.exists(path_persist):
     documents = SimpleDirectoryReader("./data/").load_data()
