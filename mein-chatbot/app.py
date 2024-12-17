@@ -9,7 +9,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Setze deinen OpenAI API-Schlüssel
-openai.api_key = Key_1
+openai.api_key = KEY_1
 
 path_modulhandbuch = "./data"
 path_persist = os.path.join(path_modulhandbuch, "persist")
