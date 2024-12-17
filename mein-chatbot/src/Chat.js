@@ -6,13 +6,6 @@ import arrowIcon from './assets/img/arrow_upward_alt.svg';
 import studini from './assets/img/studini.png';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-)
-
 function Chat() {
   // State variables to manage messages and input
   const [messages, setMessages] = useState([]);
