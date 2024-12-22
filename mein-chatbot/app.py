@@ -4,9 +4,6 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, StorageCon
 from llama_index.llms.openai import OpenAI
 import openai
 from flask_cors import CORS
-import requests 
-
-reply = requests.post(url="https:/", json={"":""})
 
 app = Flask(__name__)
 CORS(app)
