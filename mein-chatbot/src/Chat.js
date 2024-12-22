@@ -1,37 +1,41 @@
-// src/Chat.js
+// Import necessary libraries and assets
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import './Chat.css'; // Importiere die CSS-Datei
+import './Chat.css'; // Import CSS file for styling
 import arrowIcon from './assets/img/arrow_upward_alt.svg';
 import studini from './assets/img/studini.png';
+import ReactDOM from 'react-dom';
 
 function Chat() {
+  // State variables to manage messages and input
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
 
+  // Function to send a message
   const sendMessage = async () => {
-    if (input.trim() === '') return;
+    if (input.trim() === '') return; // Do nothing if input is empty
 
     const userMessage = { sender: 'user', text: input };
-    setMessages([...messages, userMessage]);
+    setMessages([...messages, userMessage]); // Add user message to state
 
     try {
-      const response = await axios.post('http://localhost:5000/chat', {
+      // Send user message to the server
+      const response = await axios.post('/api/chat', {
         message: input,
       });
 
       console.log('Antwort vom Server:', response.data.response); // Debugging
 
       const botMessage = { sender: 'bot', text: response.data.response };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
+      setMessages((prevMessages) => [...prevMessages, botMessage]); // Add bot response to state
     } catch (error) {
       console.error('Fehler beim Senden der Nachricht:', error);
       const errorMessage = error.response?.data?.error || 'Ein Fehler ist aufgetreten.';
       const botMessage = { sender: 'bot', text: errorMessage };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
+      setMessages((prevMessages) => [...prevMessages, botMessage]); // Add error message to state
     }
 
-    setInput('');
+    setInput(''); // Clear input field
   };
 
   return (
@@ -70,7 +74,5 @@ function Chat() {
     </div>
 );
 }
-
-
 
 export default Chat;
