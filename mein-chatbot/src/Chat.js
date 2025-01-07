@@ -3,7 +3,6 @@ import axios from 'axios';
 import './Chat.css'; // Import CSS file for styling
 import arrowIcon from './assets/img/arrow_upward_alt.svg';
 import studini from './assets/img/studini.png';
-import studyfox from './assets/img/StudyFox.svg';
 import ReactDOM from 'react-dom';
 
 function Chat() {
@@ -11,6 +10,17 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [suggestions, setSuggestions] = useState(['Wie kann ich dir helfen?', 'Zeige mir Beispiele!', 'Was kann ich hier machen?']);
+
+  // Ref for autoscrolling
+  const chatWindowRef = useRef(null);
+
+  // Scroll to the bottom whenever messages update
+  useEffect(() => {
+    if (chatWindowRef.current) {
+      chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    }
+  }, [messages]);
 
   // Function to toggle theme
   const toggleTheme = () => {
@@ -23,6 +33,11 @@ function Chat() {
 
     const userMessage = { sender: 'user', text: input };
     setMessages([...messages, userMessage]); // Add user message to state
+
+    // Hide suggestions after the first message
+    if (messages.length === 0) {
+      setSuggestions([]);
+    }
 
     try {
       // Send user message to the server
@@ -44,17 +59,30 @@ function Chat() {
     setInput(''); // Clear input field
   };
 
+  const handleSuggestionClick = (suggestion) => {
+    setInput(suggestion);
+  };
+
   return (
-    <div className={`body ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
+    <div className={`body ${isDarkTheme ? 'Studifox' : 'Studini'}`}>
       <div className="container">
         <header className="header">
-        <button onClick={toggleTheme} className="theme-button">
-          {isDarkTheme ? 'Studini' : 'Studyfox'}
-        </button>
-          <div className="header-img-container"><img className="header-img" src={/*studini*/studyfox} alt="Senden" /></div>
-            <h1>StudyFox hilft dir!</h1>
+          <div className="header-img-container"><img className="header-img" src={studini} alt="Senden" /></div>
+            <h1>Studini hilft dir!</h1>
+            <button onClick={toggleTheme} className="theme-button">
+              {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
+            </button>
         </header>
-        <div className="chat-window">
+        {suggestions.length > 0 && (
+          <div className="suggestions">
+            {suggestions.map((suggestion, index) => (
+              <button key={index} className="suggestion-button" onClick={() => handleSuggestionClick(suggestion)}>
+                {suggestion}
+              </button>
+            ))}
+          </div>
+        )}
+        <div className="chat-window" ref={chatWindowRef}>
             {messages.map((msg, index) => (
                 <div
                     key={index}
@@ -65,7 +93,7 @@ function Chat() {
             ))}
         </div>
         <div className="input-container">
-          <div className="input-img-container"><img className="input-img" src={/*studini*/studyfox} alt="Senden" /></div>
+          <div className="input-img-container"><img className="input-img" src={studini} alt="Senden" /></div>
             <input
                 type="text"
                 value={input}
@@ -78,7 +106,7 @@ function Chat() {
         </div>
       </div>
         <footer className="footer">
-            <p>&copy; 2025 StudyFox-Inc. Alle Rechte vorbehalten. Build 0.2.1</p>
+            <p>&copy; 2024 Studini-Inc. Alle Rechte vorbehalten. Build 0.2.1</p>
         </footer>
     </div>
 );
