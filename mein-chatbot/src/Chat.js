@@ -10,6 +10,7 @@ function Chat() {
   const [input, setInput] = useState('');
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const [suggestions, setSuggestions] = useState(['Wie kann ich dir helfen?', 'Zeige mir Beispiele!', 'Was kann ich hier machen?']);
+  const [showStartPage, setShowStartPage] = useState(true);
 
   // Ref for autoscrolling
   const chatWindowRef = useRef(null);
@@ -61,6 +62,15 @@ function Chat() {
   const handleSuggestionClick = (suggestion) => {
     setInput(suggestion);
   };
+
+  if (showStartPage) {
+    return (
+      <div className="start-page">
+        <h1>Willkommen bei StudyBot!</h1>
+        <button onClick={() => setShowStartPage(false)} className="start-button">Los geht's</button>
+      </div>
+    );
+  }
 
   return (
     <div className={`body ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
