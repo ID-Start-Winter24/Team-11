@@ -2,6 +2,8 @@
 # Studini Chatbot 
 >Für den Studiengang, der auch montags passt!
 ***
+https://studini.flsdhollister.net/
+***
 Studini ist ein Chatbot, der Studieninteressenten dabei unterstützen soll, den passenden Studiengang zu finden. 
 
 ## Inhaltsverzeichnis
