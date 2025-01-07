@@ -64,13 +64,13 @@ function Chat() {
   };
 
   return (
-    <div className={`body ${isDarkTheme ? 'Studifox' : 'Studini'}`}>
+    <div className={`body ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
       <div className="container">
         <header className="header">
           <div className="header-img-container"><img className="header-img" src={studini} alt="Senden" /></div>
             <h1>Studini hilft dir!</h1>
             <button onClick={toggleTheme} className="theme-button">
-              {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
+              {isDarkTheme ? 'Studini' : 'Studyfox'}
             </button>
         </header>
         {suggestions.length > 0 && (
