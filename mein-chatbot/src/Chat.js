@@ -4,6 +4,7 @@ import axios from 'axios';
 import './Chat.css'; // Import CSS file for styling
 import arrowIcon from './assets/img/arrow_upward_alt.svg';
 import studini from './assets/img/studini.png';
+import studyfox from './assets/img/StudyFox.svg';
 import ReactDOM from 'react-dom';
 
 function Chat() {
