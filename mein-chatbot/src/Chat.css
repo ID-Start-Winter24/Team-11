@@ -68,7 +68,10 @@
 :root {
     /* Colors */
     --blue: #017EAB;
-    --light-blue: #00B1DD;
+    --light-blue: #00B1DD;  
+
+    --orange: #f56923;
+    --light-orange: #ff9650;
     
     /* Fonts */
     --poppins-font: "Poppins" , sans-serif;
@@ -101,7 +104,7 @@ h1 {
 }
 
 .header {
-    background-color: var(--blue);
+    background-color: var(--orange);
     color: white;
     height: 48px;
     text-align: center;
@@ -148,7 +151,7 @@ h1 {
 }
 
 .user-message {
-    background-color: var(--light-blue);
+    background-color: var(--light-orange);
     color: white;
     align-self: flex-end;
     margin-left: auto;
@@ -178,7 +181,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: var(--blue);
+    background-color: var(--orange);
     border-radius: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     margin-bottom: 10px;
@@ -218,7 +221,7 @@ h1 {
     height: 44px;
     width: 44px;
     margin-right: 20px;
-    background-color: var(--blue);
+    background-color: var(--orange);
     position: absolute;
     border-radius: 100%;
     border-color: transparent;
