@@ -43,6 +43,28 @@
     font-style: normal;
 } */
 
+.theme-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}
+
+.theme-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+
+
+
 :root {
     /* Colors */
     --blue: #017EAB;

@@ -1,4 +1,3 @@
-// Import necessary libraries and assets
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './Chat.css'; // Import CSS file for styling
@@ -7,9 +6,15 @@ import studini from './assets/img/studini.png';
 import ReactDOM from 'react-dom';
 
 function Chat() {
-  // State variables to manage messages and input
+  // State variables to manage messages, input, and theme
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+
+  // Function to toggle theme
+  const toggleTheme = () => {
+    setIsDarkTheme((prevTheme) => !prevTheme);
+  };
 
   // Function to send a message
   const sendMessage = async () => {
@@ -20,7 +25,7 @@ function Chat() {
 
     try {
       // Send user message to the server
-      const response = await axios.post('/api/chat', {
+      const response = await axios.post('https://team-11-p90t.onrender.com:5000', {
         message: input,
       });
 
@@ -39,9 +44,12 @@ function Chat() {
   };
 
   return (
-    <div className="body">
+    <div className={`body ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
       <div className="container">
         <header className="header">
+        <button onClick={toggleTheme} className="theme-button">
+          {isDarkTheme ? 'Light Mode' : 'Dark Mode'}
+        </button>
           <div className="header-img-container"><img className="header-img" src={studini} alt="Senden" /></div>
             <h1>Studini hilft dir!</h1>
         </header>
@@ -61,7 +69,7 @@ function Chat() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                 className="input"
                 placeholder="Beginne hier zu tippen..."
             />
