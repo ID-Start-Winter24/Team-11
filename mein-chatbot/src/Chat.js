@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './Chat.css'; // Import CSS file for styling
 import arrowIcon from './assets/img/arrow_upward_alt.svg';
-import studini from './assets/img/studini.png';
 import ReactDOM from 'react-dom';
 
 function Chat() {
@@ -67,11 +66,13 @@ function Chat() {
     <div className={`body ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
       <div className="container">
         <header className="header">
-          <div className="header-img-container"><img className="header-img" src={studini} alt="Senden" /></div>
+          <div className="header-img-text">
+            <div className="header-img-container"></div>
             <h1>Studini hilft dir!</h1>
-            <button onClick={toggleTheme} className="theme-button">
-              {isDarkTheme ? 'Studini' : 'Studyfox'}
-            </button>
+          </div>
+          <button onClick={toggleTheme} className="theme-button">
+            {isDarkTheme ? 'Studini' : 'Studyfox'}
+          </button>
         </header>
         {suggestions.length > 0 && (
           <div className="suggestions">
@@ -83,33 +84,33 @@ function Chat() {
           </div>
         )}
         <div className="chat-window" ref={chatWindowRef}>
-            {messages.map((msg, index) => (
-                <div
-                    key={index}
-                    className={`message ${msg.sender === 'user' ? 'user-message' : 'bot-message'}`}
-                >
-                    <p>{msg.text}</p>
-                </div>
-            ))}
+          {messages.map((msg, index) => (
+            <div
+              key={index}
+              className={`message ${msg.sender === 'user' ? 'user-message' : 'bot-message'}`}
+            >
+              <p>{msg.text}</p>
+            </div>
+          ))}
         </div>
         <div className="input-container">
-          <div className="input-img-container"><img className="input-img" src={studini} alt="Senden" /></div>
-            <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
-                className="input"
-                placeholder="Beginne hier zu tippen..."
-            />
-            <button onClick={sendMessage} className="button"><img src={arrowIcon} alt="Senden" /></button>
+          <div className="input-img-container"></div>
+          <input
+            type="text"
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
+            className="input"
+            placeholder="Beginne hier zu tippen..."
+          />
+          <button onClick={sendMessage} className="button"><img src={arrowIcon} alt="Senden" /></button>
         </div>
       </div>
-        <footer className="footer">
-            <p>&copy; 2024 Studini-Inc. Alle Rechte vorbehalten. Build 0.2.1</p>
-        </footer>
+      <footer className="footer">
+        <p>&copy; 2024 Studini-Inc. Alle Rechte vorbehalten. Build 0.2.1</p>
+      </footer>
     </div>
-);
+  );
 }
 
 export default Chat;

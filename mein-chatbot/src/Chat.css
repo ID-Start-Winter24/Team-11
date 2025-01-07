@@ -62,18 +62,19 @@
 .light-theme {
     --main-color: #017EAB;
     --light-main-color: #00B1DD;
+    --icon-url: url("assets/img/studini.png");
 }
-  
+
 /* StudyFox Theme */
 .dark-theme {
     --main-color: #cc4400;
     --light-main-color: #ff7733;
+    --icon-url: url("assets/img/StudyFox.svg");
 }
 
-
-:root {    
+:root {
     /* Fonts */
-    --poppins-font: "Poppins" , sans-serif;
+    --poppins-font: "Poppins", sans-serif;
     --geist-font: "Geist", sans-serif;
 }
 
@@ -111,11 +112,18 @@ h1 {
     border-bottom-right-radius: 16px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 12px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 .header-img-container {
+    width: 60px;
+    height: 60px;
+    background-image: var(--icon-url);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
     border-radius: 12px;
     margin-right: 16px;
     height: 40px;
@@ -126,8 +134,11 @@ h1 {
     justify-content: center;
 }
 
-/* .header-img {
-} */
+.header-img-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .chat-window {
     height: 100%;
@@ -138,8 +149,9 @@ h1 {
     flex-direction: column;
 }
 
-.chat-window::-webkit-scrollbar { /* Hides Scrollbar */
-    display: none; 
+.chat-window::-webkit-scrollbar {
+    /* Hides Scrollbar */
+    display: none;
 }
 
 .message {
@@ -202,6 +214,12 @@ h1 {
 }
 
 .input-img-container {
+    width: 60px;
+    height: 60px;
+    background-image: var(--icon-url);
+    background-repeat: no-repeat;
+    background-size: 30px;
+    background-position: center;
     margin-left: 12px;
     border-radius: 12px;
     height: 40px;
@@ -255,4 +273,4 @@ h1 {
     .input-img-container {
         display: none;
     }
-  }
+}
