@@ -68,10 +68,10 @@ function Chat() {
         <header className="header">
           <div className="header-img-text">
             <div className="header-img-container"></div>
-            <h1>Studini hilft dir!</h1>
+            <h1>Finde dein Traumstudium!</h1>
           </div>
           <button onClick={toggleTheme} className="theme-button">
-            {isDarkTheme ? 'Studini' : 'Studyfox'}
+            {isDarkTheme ? 'Wechsle zu Studini' : 'Wechsle zu StudyFox'}
           </button>
         </header>
         {suggestions.length > 0 && (
@@ -107,7 +107,7 @@ function Chat() {
         </div>
       </div>
       <footer className="footer">
-        <p>&copy; 2024 Studini-Inc. Alle Rechte vorbehalten. Build 0.2.1</p>
+        <p>&copy; 2025 StudyBot-Inc. Alle Rechte vorbehalten. Build 0.5</p>
       </footer>
     </div>
   );

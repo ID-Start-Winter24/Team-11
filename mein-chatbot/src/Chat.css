@@ -43,19 +43,12 @@
     font-style: normal;
 } */
 
-.theme-button {
-    margin: 10px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff;
-    color: white;
-}
-
 .theme-button:hover {
     background-color: #0056b3;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 /* Studini Theme */
@@ -140,6 +133,24 @@ h1 {
     align-items: center;
 }
 
+.theme-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    transition: all 0.2s;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.4);
+}
+
+.theme-button:hover {
+    background-color: var(--light-main-color);
+    color: white;
+}
+
 .chat-window {
     height: 100%;
     overflow-y: scroll;
@@ -152,6 +163,30 @@ h1 {
 .chat-window::-webkit-scrollbar {
     /* Hides Scrollbar */
     display: none;
+}
+
+.suggestion-button {
+    padding: 5px 10px;
+    border-radius: 10px;
+    max-width: 80%;
+    background-color: var(--light-main-color);
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+    max-width: 550px;
+    display: inline-block;
+    overflow-wrap: break-word;
+    border-radius: 12px;
+    border-top-right-radius: 0px;
+    box-shadow: 0 0px 4px rgba(0, 0, 0, 0.4);
+    margin: 10px 15px 20px 0;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.suggestion-button:hover {
+    background-color: var(--main-color);
 }
 
 .message {
