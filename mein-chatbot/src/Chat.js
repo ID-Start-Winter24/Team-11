@@ -4,6 +4,7 @@ import axios from 'axios';
 import './Chat.css'; // Importiere die CSS-Datei
 import arrowIcon from './assets/img/arrow_upward_alt.svg';
 import studini from './assets/img/studini.png';
+import studyfox from './assets/img/StudyFox.svg';
 
 function Chat() {
   const [messages, setMessages] = useState([]);
@@ -38,8 +39,8 @@ function Chat() {
     <div className="body">
       <div className="container">
         <header className="header">
-          <div className="header-img-container"><img className="header-img" src={studini} alt="Senden" /></div>
-            <h1>Studini hilft dir!</h1>
+          <div className="header-img-container"><img className="header-img" src={/*studini*/studyfox} alt="Senden" /></div>
+            <h1>StudyFox hilft dir!</h1>
         </header>
         <div className="chat-window">
             {messages.map((msg, index) => (
@@ -52,7 +53,7 @@ function Chat() {
             ))}
         </div>
         <div className="input-container">
-          <div className="input-img-container"><img className="input-img" src={studini} alt="Senden" /></div>
+          <div className="input-img-container"><img className="input-img" src={/*studini*/studyfox} alt="Senden" /></div>
             <input
                 type="text"
                 value={input}
@@ -65,7 +66,7 @@ function Chat() {
         </div>
       </div>
         <footer className="footer">
-            <p>&copy; 2024 Studini-Inc. Alle Rechte vorbehalten. Build 0.2.1</p>
+            <p>&copy; 2025 StudyFox-Inc. Alle Rechte vorbehalten. Build 0.2.1</p>
         </footer>
     </div>
 );
