@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './Chat.css'; // Import CSS file for styling
 import arrowIcon from './assets/img/arrow_upward_alt.svg';
+import backgroundVideo from './assets/videos/background.mp4'; // Import the video file
 import ReactDOM from 'react-dom';
 
 function Chat() {
@@ -66,6 +67,10 @@ function Chat() {
   if (showStartPage) {
     return (
       <div className="start-page">
+        <video autoPlay loop muted className="background-video">
+          <source src={backgroundVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
         <div className='glass-background'>
           <h1 className='start-page-h1'>Willkommen bei StudyBot!</h1>
           <p>created by Jonas, Stefan und Johann</p>

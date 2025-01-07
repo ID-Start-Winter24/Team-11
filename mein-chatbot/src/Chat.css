@@ -301,15 +301,13 @@ h1 {
 
 /* Landing Page */
 
-.start-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 100vh;
-    background-image: url(https://s2.ezgif.com/tmp/ezgif-2-2ec28c26aa.gif);
-    background-size: cover;
-    background-repeat: no-repeat;
+
+.background-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Scale the video to cover the container */
+    z-index: -1; /* Place the video behind the content */
 }
 
 .glass-background {
@@ -324,6 +322,14 @@ h1 {
     align-items: center;
     flex-direction: column;
     padding: 25px 40px;
+}
+
+.start-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .start-page-h1 {
