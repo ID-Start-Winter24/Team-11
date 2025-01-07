@@ -66,8 +66,11 @@ function Chat() {
   if (showStartPage) {
     return (
       <div className="start-page">
-        <h1>Willkommen bei StudyBot!</h1>
-        <button onClick={() => setShowStartPage(false)} className="start-button">Los geht's</button>
+        <div className='glass-background'>
+          <h1 className='start-page-h1'>Willkommen bei StudyBot!</h1>
+          <p>created by Jonas, Stefan und Johann</p>
+          <button onClick={() => setShowStartPage(false)} className="start-button">Los geht's</button>
+        </div>
       </div>
     );
   }
