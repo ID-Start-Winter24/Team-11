@@ -1,21 +1,46 @@
-// src/Chat.js
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import './Chat.css'; // Importiere die CSS-Datei
+import './Chat.css'; // Import CSS file for styling
 import arrowIcon from './assets/img/arrow_upward_alt.svg';
 import studini from './assets/img/studini.png';
+import ReactDOM from 'react-dom';
 
 function Chat() {
+  // State variables to manage messages, input, and theme
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
+  const [suggestions, setSuggestions] = useState(['Wie kann ich dir helfen?', 'Zeige mir Beispiele!', 'Was kann ich hier machen?']);
 
+  // Ref for autoscrolling
+  const chatWindowRef = useRef(null);
+
+  // Scroll to the bottom whenever messages update
+  useEffect(() => {
+    if (chatWindowRef.current) {
+      chatWindowRef.current.scrollTop = chatWindowRef.current.scrollHeight;
+    }
+  }, [messages]);
+
+  // Function to toggle theme
+  const toggleTheme = () => {
+    setIsDarkTheme((prevTheme) => !prevTheme);
+  };
+
+  // Function to send a message
   const sendMessage = async () => {
-    if (input.trim() === '') return;
+    if (input.trim() === '') return; // Do nothing if input is empty
 
     const userMessage = { sender: 'user', text: input };
-    setMessages([...messages, userMessage]);
+    setMessages([...messages, userMessage]); // Add user message to state
+
+    // Hide suggestions after the first message
+    if (messages.length === 0) {
+      setSuggestions([]);
+    }
 
     try {
+      // Send user message to the server
       const response = await axios.post('http://localhost:5000/chat', {
         message: input,
       });
@@ -23,25 +48,41 @@ function Chat() {
       console.log('Antwort vom Server:', response.data.response); // Debugging
 
       const botMessage = { sender: 'bot', text: response.data.response };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
+      setMessages((prevMessages) => [...prevMessages, botMessage]); // Add bot response to state
     } catch (error) {
       console.error('Fehler beim Senden der Nachricht:', error);
       const errorMessage = error.response?.data?.error || 'Ein Fehler ist aufgetreten.';
       const botMessage = { sender: 'bot', text: errorMessage };
-      setMessages((prevMessages) => [...prevMessages, botMessage]);
+      setMessages((prevMessages) => [...prevMessages, botMessage]); // Add error message to state
     }
 
-    setInput('');
+    setInput(''); // Clear input field
+  };
+
+  const handleSuggestionClick = (suggestion) => {
+    setInput(suggestion);
   };
 
   return (
-    <div className="body">
+    <div className={`body ${isDarkTheme ? 'dark-theme' : 'light-theme'}`}>
       <div className="container">
         <header className="header">
           <div className="header-img-container"><img className="header-img" src={studini} alt="Senden" /></div>
             <h1>Studini hilft dir!</h1>
+            <button onClick={toggleTheme} className="theme-button">
+              {isDarkTheme ? 'Studini' : 'Studyfox'}
+            </button>
         </header>
-        <div className="chat-window">
+        {suggestions.length > 0 && (
+          <div className="suggestions">
+            {suggestions.map((suggestion, index) => (
+              <button key={index} className="suggestion-button" onClick={() => handleSuggestionClick(suggestion)}>
+                {suggestion}
+              </button>
+            ))}
+          </div>
+        )}
+        <div className="chat-window" ref={chatWindowRef}>
             {messages.map((msg, index) => (
                 <div
                     key={index}
@@ -57,7 +98,7 @@ function Chat() {
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+                onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                 className="input"
                 placeholder="Beginne hier zu tippen..."
             />
@@ -70,7 +111,5 @@ function Chat() {
     </div>
 );
 }
-
-
 
 export default Chat;

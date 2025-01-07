@@ -43,11 +43,35 @@
     font-style: normal;
 } */
 
-:root {
-    /* Colors */
-    --blue: #017EAB;
-    --light-blue: #00B1DD;
-    
+.theme-button {
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+}
+
+.theme-button:hover {
+    background-color: #0056b3;
+}
+
+/* Studini Theme */
+.light-theme {
+    --main-color: #017EAB;
+    --light-main-color: #00B1DD;
+}
+  
+/* StudyFox Theme */
+.dark-theme {
+    --main-color: #cc4400;
+    --light-main-color: #ff7733;
+}
+
+
+:root {    
     /* Fonts */
     --poppins-font: "Poppins" , sans-serif;
     --geist-font: "Geist", sans-serif;
@@ -79,7 +103,7 @@ h1 {
 }
 
 .header {
-    background-color: var(--blue);
+    background-color: var(--main-color);
     color: white;
     height: 48px;
     text-align: center;
@@ -126,7 +150,7 @@ h1 {
 }
 
 .user-message {
-    background-color: var(--light-blue);
+    background-color: var(--light-main-color);
     color: white;
     align-self: flex-end;
     margin-left: auto;
@@ -156,7 +180,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    background-color: var(--blue);
+    background-color: var(--main-color);
     border-radius: 24px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     margin-bottom: 10px;
@@ -196,7 +220,7 @@ h1 {
     height: 44px;
     width: 44px;
     margin-right: 20px;
-    background-color: var(--blue);
+    background-color: var(--main-color);
     position: absolute;
     border-radius: 100%;
     border-color: transparent;
