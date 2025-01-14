@@ -32,5 +32,10 @@ def chat():
     response = query_engine.query(user_input)
     return jsonify({'response': str(response)})
 
+@app.route('/', methods=['GET'])
+def welcome():
+    return jsonify({'response': "Hallo! Ich bin Studini, dein Studienberater-Bot. Wie kann ich dir helfen, dein Traumstudium zu finden?"})
+
+
 if __name__ == '__main__':
     app.run()
