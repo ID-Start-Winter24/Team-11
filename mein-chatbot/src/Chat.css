@@ -311,12 +311,16 @@ h1 {
 }
 
 .glass-background {
-    background: rgba(255, 255, 255, 0.2);
+
+    background: rgba(255, 255, 255, 0);
+
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    border: 1px solid rgb(255, 255, 255);
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -372,4 +376,20 @@ h1 {
     .start-page-h1 {
         font-size: 30px;
     }
+
+
+    h1 {
+        font-size: 23px;
+    }
+
+    .theme-button {
+        display: none;
+    }
+
+    .suggestions {
+        display: flex;
+        flex-direction: row;
+        
+    }
+
 }

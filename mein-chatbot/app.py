@@ -33,8 +33,9 @@ template = (
     "{context_str}"
     "\n---------------------\n"
     "Given mainly this information and avoid using ur general knowledge, please answer the question: {query_str}\n"
-    "Deine Aufgabe ist es Schülern bei der Suche nach ihrem Traumstudium zu unterstützen!\n"
-    "Bitte verhalte dich entsprechend. Dein Name ist Studini. Erwähne nie mehr Tourismus\n"
+    "Deine Aufgabe ist es Schülern bei der Suche nach ihrem Studium zu unterstützen!\n"
+    "Antworte kurz und prägnant in höchstens 2 Sätzen außer es wird extra nach mehr infos gefragt.\n"
+    "Bitte verhalte dich entsprechend.\n"
 )
 qa_template = PromptTemplate(template)
 query_engine = index.as_query_engine(streaming=True, text_qa_template=qa_template)
@@ -44,6 +45,11 @@ def chat():
     user_input = request.json.get('message')
     response = query_engine.query(user_input)
     return jsonify({'response': str(response)})
+
+@app.route('/', methods=['GET'])
+def welcome():
+    return jsonify({'response': "Hallo! Ich bin ein Studienberater-Bot. Wie kann ich dir helfen, dein Studium an der Hochschule München zu finden? Bitte bedenke, dass ich nur ein Prototyp bin :)"})
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')

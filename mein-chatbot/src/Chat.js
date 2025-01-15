@@ -23,6 +23,25 @@ function Chat() {
     }
   }, [messages]);
 
+
+  // Fetch welcome message when the page loads
+  useEffect(() => {
+    const fetchWelcomeMessage = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/');
+        const botMessage = { sender: 'bot', text: response.data.response };
+        setMessages([botMessage]); // Add welcome message to chat
+      } catch (error) {
+        console.error('Fehler beim Laden der Begrüßungsnachricht:', error);
+        const errorMessage = 'Ein Fehler ist aufgetreten. Bitte versuche es später erneut.';
+        const botMessage = { sender: 'bot', text: errorMessage };
+        setMessages([botMessage]);
+      }
+    };
+
+    fetchWelcomeMessage();
+  }, []);
+
   // Function to toggle theme
   const toggleTheme = () => {
     setIsDarkTheme((prevTheme) => !prevTheme);
@@ -42,11 +61,10 @@ function Chat() {
 
     try {
       // Send user message to the server
+
       const response = await axios.post('/api/chat', {
         message: input,
       });
-
-      console.log('Antwort vom Server:', response.data.response); // Debugging
 
       const botMessage = { sender: 'bot', text: response.data.response };
       setMessages((prevMessages) => [...prevMessages, botMessage]); // Add bot response to state
@@ -58,11 +76,13 @@ function Chat() {
     }
 
     setInput(''); // Clear input field
+
   };
 
   const handleSuggestionClick = (suggestion) => {
     setInput(suggestion);
   };
+
 
   if (showStartPage) {
     return (
@@ -71,10 +91,14 @@ function Chat() {
           <source src={backgroundVideo} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className='glass-background'>
-          <h1 className='start-page-h1'>Willkommen bei StudyBot!</h1>
+
+        <div className="glass-background">
+          <h1 className="start-page-h1">Willkommen bei StudyBot!</h1>
           <p>created by Jonas, Stefan und Johann</p>
-          <button onClick={() => setShowStartPage(false)} className="start-button">Los geht's</button>
+          <button onClick={() => setShowStartPage(false)} className="start-button">
+            Los geht's
+          </button>
+
         </div>
       </div>
     );
@@ -95,7 +119,13 @@ function Chat() {
         {suggestions.length > 0 && (
           <div className="suggestions">
             {suggestions.map((suggestion, index) => (
-              <button key={index} className="suggestion-button" onClick={() => handleSuggestionClick(suggestion)}>
+
+              <button
+                key={index}
+                className="suggestion-button"
+                onClick={() => handleSuggestionClick(suggestion)}
+              >
+
                 {suggestion}
               </button>
             ))}
@@ -103,10 +133,9 @@ function Chat() {
         )}
         <div className="chat-window" ref={chatWindowRef}>
           {messages.map((msg, index) => (
-            <div
-              key={index}
-              className={`message ${msg.sender === 'user' ? 'user-message' : 'bot-message'}`}
-            >
+
+            <div key={index} className={`message ${msg.sender === 'user' ? 'user-message' : 'bot-message'}`}>
+
               <p>{msg.text}</p>
             </div>
           ))}
@@ -121,7 +150,11 @@ function Chat() {
             className="input"
             placeholder="Beginne hier zu tippen..."
           />
-          <button onClick={sendMessage} className="button"><img src={arrowIcon} alt="Senden" /></button>
+
+          <button onClick={sendMessage} className="button">
+            <img src={arrowIcon} alt="Senden" />
+          </button>
+
         </div>
       </div>
       <footer className="footer">
@@ -132,3 +165,4 @@ function Chat() {
 }
 
 export default Chat;
+
