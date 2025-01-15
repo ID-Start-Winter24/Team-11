@@ -10,7 +10,7 @@ function Chat() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isDarkTheme, setIsDarkTheme] = useState(false);
-  const [suggestions, setSuggestions] = useState(['Wie kann ich dir helfen?', 'Zeige mir Beispiele!', 'Was kann ich hier machen?']);
+  const [suggestions, setSuggestions] = useState(['Wie kannst du mir helfen?', 'Zeige mir Beispiele!', 'Was kann ich hier machen?']);
   const [showStartPage, setShowStartPage] = useState(true);
 
   // Ref for autoscrolling
